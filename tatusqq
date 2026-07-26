@@ -1,0 +1,33 @@
+* [33mda9f112[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m adding XUtil.java file
+[31m|[m * [33me0a7f85[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Rename login method to register in XUtil class
+[31m|[m[31m/[m  
+* [33m210c4cf[m deleted files
+*   [33mff8cd22[m Merge pull request #3 from sahu-dibyansu/f1
+[33m|[m[34m\[m  
+[33m|[m * [33m2734a67[m[33m ([m[1;31morigin/f1[m[33m)[m f2
+[33m|[m[33m/[m  
+*   [33m0fea477[m Merge pull request #2 from sahu-dibyansu/testing
+[35m|[m[36m\[m  
+[35m|[m *   [33mf3acb37[m[33m ([m[1;31morigin/testing[m[33m)[m Merge branch 'main' into testing
+[35m|[m [1;31m|[m[35m\[m  
+[35m|[m [1;31m|[m[35m/[m  
+[35m|[m[35m/[m[1;31m|[m   
+* [1;31m|[m [33m11b3bf4[m Add NewTest class with cart locator and method
+* [1;31m|[m [33m5d2e75b[m Add Rest class with main method for testing
+[1;32m|[m * [33mec001ef[m add test page
+[1;32m|[m * [33m8ccc912[m[33m ([m[1;33mtag: [m[1;33mv2.0[m[33m)[m releasing new feature v2.0
+[1;32m|[m * [33m984d5bc[m[33m ([m[1;33mtag: [m[1;33mv1.0[m[33m)[m added demo page
+[1;32m|[m[1;32m/[m  
+*   [33m137d9b8[m Merge pull request #1 from sahu-dibyansu/cartpage
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33mfba384b[m[33m ([m[1;31morigin/cartpage[m[33m)[m changes are done as per Naveen's review comments
+[1;33m|[m * [33mbe481b5[m CartPage method added
+[1;33m|[m[1;33m/[m  
+* [33m4d5ce48[m delete
+* [33mafedc26[m testing
+* [33mb68de3c[m updating the loginpage test
+* [33m92c604f[m deleted A and B
+* [33me06fdaf[m reason: added A and B and updated Loginpage test
+* [33me451376[m deleted demotest file
+* [33mdfaec4e[m created demo test and updated loginpagetest file
+* [33m2190181[m open cart framework code
