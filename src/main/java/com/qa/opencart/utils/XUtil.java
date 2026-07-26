@@ -6,5 +6,9 @@ public class XUtil {
 
         System.out.println("app registration");
     }
+    public void login(){
+
+        System.out.println("app login");
+    }
 
 }
