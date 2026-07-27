@@ -5,9 +5,9 @@
 	thread-count="3" parallel="tests">
 
 	<listeners>
-		<!-- <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" /> -->
+		<listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
 		<!-- <listener class-name="com.qa.opencart.listeners.ExtentReportListener"/> -->
-		<!-- <listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/> -->
+		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/>
 		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
 	</listeners>
 
