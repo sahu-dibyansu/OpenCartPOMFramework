@@ -10,36 +10,36 @@ pipeline
     {
         stage('Build') 
         {
-            // steps
-            // {
-            //      git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-            //      bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            steps
+            {
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+            post 
+            {
+                success
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+
+            // steps{
+            //     echo("build the project")
             // }
-            // post 
-            // {
-            //     success
-            //     {
-            //         junit '**/target/surefire-reports/TEST-*.xml'
-            //         archiveArtifacts 'target/*.jar'
-            //     }
-            // }
-
-            steps{
-                echo("build the project")
-            }
         }
 
-        stage("Run Unit test"){
-            steps{
-                echo("run UTs")
-            }
-        }
+        // stage("Run Unit test"){
+        //     steps{
+        //         echo("run UTs")
+        //     }
+        // }
 
-        stage("Run Integration test"){
-            steps{
-                echo("run ITs")
-            }
-        }
+        // stage("Run Integration test"){
+        //     steps{
+        //         echo("run ITs")
+        //     }
+        // }
         
         
         stage("Deploy to QA"){
@@ -55,7 +55,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
+                    bat "mvn clean test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml"
                     
                 }
             }
@@ -99,7 +99,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
+                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
                     
                 }
             }
