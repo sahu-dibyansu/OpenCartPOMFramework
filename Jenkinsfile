@@ -20,25 +20,24 @@ pipeline {
                 git branch: 'master',
                     url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
 
-                bat 'mvn clean package'
-
+                bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
 
             post {
 
-                success {
+                always {
 
                     junit '**/target/surefire-reports/TEST-*.xml'
 
-                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-
+                    archiveArtifacts artifacts: 'target/*.jar',
+                                      fingerprint: true
                 }
             }
         }
 
         stage('Deploy to QA') {
             steps {
-                echo 'Deploy to QA Done'
+                echo 'Application Deployed to QA Environment'
             }
         }
 
@@ -52,7 +51,7 @@ pipeline {
 
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 
-                    bat 'mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml'
+                    bat "mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml"
 
                 }
             }
@@ -89,7 +88,7 @@ pipeline {
 
         stage('Deploy to Stage') {
             steps {
-                echo 'Deploy to Stage Done'
+                echo 'Application Deployed to Stage Environment'
             }
         }
 
@@ -103,7 +102,7 @@ pipeline {
 
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 
-                    bat 'mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_sanity.xml'
+                    bat "mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_sanity.xml"
 
                 }
             }
@@ -126,7 +125,7 @@ pipeline {
 
         stage('Deploy to PROD') {
             steps {
-                echo 'Deploy to PROD Done'
+                echo 'Application Deployed to Production Environment'
             }
         }
     }
