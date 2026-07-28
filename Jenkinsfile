@@ -27,13 +27,19 @@ pipeline
             steps{
                 echo("build the project")
             }
+        }
 
-            post{
-
+        stage("Run Unit test"){
+            steps{
                 echo("run UTs")
             }
         }
-        
+
+        stage("Run Integration test"){
+            steps{
+                echo("run ITs")
+            }
+        }
         
         
         stage("Deploy to QA"){
