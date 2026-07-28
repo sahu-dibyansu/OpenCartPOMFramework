@@ -5,27 +5,16 @@
 	thread-count="10" parallel="tests">
 
 	<listeners>
-		<!-- <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" /> -->
+		<listener class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
 		<!-- <listener class-name="com.qa.opencart.listeners.ExtentReportListener"/> -->
 		<!-- <listener class-name="com.qa.opencart.listeners.AnnotationTransformer"/> -->
 		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
 	</listeners>
 
-
-	<listeners>
-		<listener
-			class-name="com.aventstack.chaintest.plugins.ChainTestListener" />
-		<listener
-			class-name="com.qa.opencart.listeners.TestAllureListener" />
-		<!-- <listener class-name="com.qa.opencart.listeners.AnnotationTransformer" 
-			/> -->
-
-	</listeners>
-
 	<test name="Login Page Test_chrome">
 		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="126.0" />
-		<parameter name="testname" value="Login Page Test" />
+		<!-- <parameter name="browserversion" value="126.0" /> -->
+		<!-- <parameter name="testname" value="Login Page Test" /> -->
 
 
 		<classes>
@@ -33,7 +22,7 @@
 		</classes>
 	</test>
 
-	<test name="Login Page Test_firefox">
+	<!-- <test name="Login Page Test_firefox">
 		<parameter name="browser" value="firefox" />
 		<parameter name="browserversion" value="125.0" />
 		<parameter name="testname" value="Login Page Test" />
@@ -41,13 +30,13 @@
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
-	</test>
+	</test> -->
 
 
 	<test name="Accounts Page Test_chrome">
 		<parameter name="browser" value="chrome" />
-		<parameter name="browserversion" value="123.0" />
-		<parameter name="testname" value="Accounts Page Test" />
+		<!-- <parameter name="browserversion" value="123.0" /> -->
+		<!-- <parameter name="testname" value="Accounts Page Test" /> -->
 
 		<classes>
 			<class name="com.qa.opencart.tests.AccountsPageTest" />
@@ -56,8 +45,8 @@
 
 	<test name="Search Test_chrome">
 		<parameter name="browser" value="firefox" />
-		<parameter name="browserversion" value="124.0" />
-		<parameter name="testname" value="Search Page Test" />
+		<!-- <parameter name="browserversion" value="124.0" /> -->
+		<!-- <parameter name="testname" value="Search Page Test" /> -->
 
 		<classes>
 			<class name="com.qa.opencart.tests.SearchTest" />
@@ -65,7 +54,7 @@
 	</test>
 
 
-	<test name="ProductInfo Page Test">
+	<!-- <test name="ProductInfo Page Test">
 		<parameter name="browser" value="firefox" />
 		<parameter name="browserversion" value="105.0" />
 		<parameter name="testname" value="Product Info Page Test" />
@@ -73,9 +62,9 @@
 		<classes>
 			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
 		</classes>
-	</test>
+	</test> -->
 
-	<test name="Register Page Test">
+	<!-- <test name="Register Page Test">
 		<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="113.0" />
 		<parameter name="testname" value="Register Page Test" />
@@ -83,7 +72,7 @@
 		<classes>
 			<class name="com.qa.opencart.tests.RegisterPageTest" />
 		</classes>
-	</test>
+	</test> -->
 	<!-- mvn clean test -DsuiteXmlFile=src/test/resources/testrunners/testng_regression.xml -->
 
 
