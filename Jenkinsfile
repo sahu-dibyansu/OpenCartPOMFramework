@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
+                    bat "mvn clean test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     
                 }
             }

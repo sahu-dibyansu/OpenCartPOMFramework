@@ -147,7 +147,7 @@
 					<reuseForks>true</reuseForks>
 					<suiteXmlFiles>
 						<!-- <suiteXmlFile>src/test/resources/testrunners/testng_chrome.xml</suiteXmlFile> -->
-						<suiteXmlFile>${suiteXmlFiles}</suiteXmlFile>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 
 					<argLine>
