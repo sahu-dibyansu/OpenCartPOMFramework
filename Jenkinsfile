@@ -1,131 +1,148 @@
-pipeline 
-{
-    agent any
-    
-    tools{
-        maven 'maven'
-        }
+pipeline {
 
-    stages 
-    {
-        stage('Build') 
-        {
-            steps
-            {
-                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+    agent any
+
+    tools {
+        maven 'maven'
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+
+                deleteDir()
+
+                git branch: 'master',
+                    url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
+
+                bat 'mvn clean package'
+
             }
-            post 
-            {
-                success
-                {
+
+            post {
+
+                success {
+
                     junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+
                 }
             }
-
-            // steps{
-            //     echo("build the project")
-            // }
         }
 
-        // stage("Run Unit test"){
-        //     steps{
-        //         echo("run UTs")
-        //     }
-        // }
-
-        // stage("Run Integration test"){
-        //     steps{
-        //         echo("run ITs")
-        //     }
-        // }
-        
-        
-        stage("Deploy to QA"){
-            steps{
-                echo("deploy to qa done")
+        stage('Deploy to QA') {
+            steps {
+                echo 'Deploy to QA Done'
             }
         }
-        
-        
-        
-                
+
         stage('Regression Automation Tests') {
             steps {
+
+                deleteDir()
+
+                git branch: 'main',
+                    url: 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
+
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml"
-                    
+
+                    bat 'mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_regression.xml'
+
                 }
             }
         }
-                
-     
-        stage('Publish Allure Reports') {
-           steps {
-                script {
-                    allure([
+
+        stage('Publish Allure Report') {
+            steps {
+
+                allure([
                         includeProperties: false,
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/allure-results']]
-                    ])
-                }
+                        results: [[path: 'allure-results']]
+                ])
+
             }
         }
-        
-        
-        stage('Publish ChainTest Report'){
-            steps{
-                     publishHTML([allowMissing: false,
-                                  alwaysLinkToLastBuild: false, 
-                                  keepAll: true, 
-                                  reportDir: 'target/chaintest', 
-                                  reportFiles: 'Index.html', 
-                                  reportName: 'HTML Regression ChainTest Report', 
-                                  reportTitles: ''])
-            }
-        }
-        
-        stage("Deploy to Stage"){
-            steps{
-                echo("deploy to Stage")
-            }
-        }
-        
-        stage('Sanity Automation Test') {
+
+        stage('Publish Regression ChainTest Report') {
             steps {
+
+                publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'target/chaintest',
+                        reportFiles: 'Index.html',
+                        reportName: 'Regression ChainTest Report'
+                ])
+
+            }
+        }
+
+        stage('Deploy to Stage') {
+            steps {
+                echo 'Deploy to Stage Done'
+            }
+        }
+
+        stage('Sanity Automation Tests') {
+            steps {
+
+                deleteDir()
+
+                git branch: 'main',
+                    url: 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
+
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/sahu-dibyansu/OpenCartPOMFramework.git'
-                    bat "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml"
-                    
+
+                    bat 'mvn test -Dsurefire.suiteXmlFile=src/test/resources/testrunners/testng_sanity.xml'
+
                 }
             }
         }
-        
-        
-        
-        stage('Publish sanity ChainTest Report'){
-            steps{
-                     publishHTML([allowMissing: false,
-                                  alwaysLinkToLastBuild: false, 
-                                  keepAll: true, 
-                                  reportDir: 'target/chaintest', 
-                                  reportFiles: 'Index.html', 
-                                  reportName: 'HTML Sanity ChainTest Report', 
-                                  reportTitles: ''])
+
+        stage('Publish Sanity ChainTest Report') {
+            steps {
+
+                publishHTML([
+                        allowMissing: true,
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'target/chaintest',
+                        reportFiles: 'Index.html',
+                        reportName: 'Sanity ChainTest Report'
+                ])
+
             }
         }
-        
-        
-        stage("Deploy to PROD"){
-            steps{
-                echo("deploy to PROD")
+
+        stage('Deploy to PROD') {
+            steps {
+                echo 'Deploy to PROD Done'
             }
         }
-        
-        
+    }
+
+    post {
+
+        always {
+            cleanWs()
+        }
+
+        success {
+            echo 'Pipeline executed successfully.'
+        }
+
+        failure {
+            echo 'Pipeline execution failed.'
+        }
     }
 }
