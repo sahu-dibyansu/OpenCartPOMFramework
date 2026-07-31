@@ -51,7 +51,7 @@ pipeline {
 
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 
-                    bat "mvn test -DsuiteXmlFile=src/test/resources/testrunners/testng_regression.xml"
+                    bat "mvn test -DsuiteXmlFile=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
 
                 }
             }
@@ -102,7 +102,7 @@ pipeline {
 
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 
-                    bat "mvn test -DsuiteXmlFile=src/test/resources/testrunners/testng_sanity.xml"
+                    bat "mvn test -DsuiteXmlFile=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
 
                 }
             }
