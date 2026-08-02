@@ -43,15 +43,15 @@
 		</classes>
 	</test>
 
-	<!-- <test name="Search Test_edge">
-		<parameter name="browser" value="edge" />
-		<parameter name="browserversion" value="124.0" />
-		<parameter name="testname" value="Search Page Test" />
+	<test name="Search Test_chrome">
+		<parameter name="browser" value="chrome" />
+		<!-- <parameter name="browserversion" value="124.0" /> -->
+		<!-- <parameter name="testname" value="Search Page Test" /> -->
 
 		<classes>
 			<class name="com.qa.opencart.tests.SearchTest" />
 		</classes>
-	</test> -->
+	</test>
 
 
 	<!-- <test name="ProductInfo Page Test">
@@ -65,7 +65,7 @@
 	</test> -->
 
 	<!-- <test name="Register Page Test">
-		<parameter name="browser" value="chrome" />
+		<parameter name="browser" value="firefox" />
 		<parameter name="browserversion" value="113.0" />
 		<parameter name="testname" value="Register Page Test" />
 
