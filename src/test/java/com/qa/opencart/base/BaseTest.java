@@ -47,6 +47,7 @@ public class BaseTest {
         df = new DriverFactory();
         prop = df.initProp();
 
+        //if browserName is passed from the .xml file
         if (browserName != null && !browserName.isBlank()) {
 			prop.setProperty("browser", browserName);
 

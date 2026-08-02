@@ -33,8 +33,8 @@
 	</test> -->
 
 
-	<test name="Accounts Page Test_chrome">
-		<parameter name="browser" value="chrome" />
+	<test name="Accounts Page Test_firefox">
+		<parameter name="browser" value="firefox" />
 		<!-- <parameter name="browserversion" value="123.0" /> -->
 		<!-- <parameter name="testname" value="Accounts Page Test" /> -->
 
@@ -43,15 +43,15 @@
 		</classes>
 	</test>
 
-	<test name="Search Test_chrome">
-		<parameter name="browser" value="firefox" />
-		<!-- <parameter name="browserversion" value="124.0" /> -->
-		<!-- <parameter name="testname" value="Search Page Test" /> -->
+	<!-- <test name="Search Test_edge">
+		<parameter name="browser" value="edge" />
+		<parameter name="browserversion" value="124.0" />
+		<parameter name="testname" value="Search Page Test" />
 
 		<classes>
 			<class name="com.qa.opencart.tests.SearchTest" />
 		</classes>
-	</test>
+	</test> -->
 
 
 	<!-- <test name="ProductInfo Page Test">
