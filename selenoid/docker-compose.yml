@@ -15,7 +15,7 @@ services:
       - "./target:/opt/selenoid/video"
     environment:
       - OVERRIDE_VIDEO_OUTPUT_DIR=/opt/selenoid/video
-      - DOCKER_API_VERSION=1.55
+      - DOCKER_API_VERSION=1.44
     command:
       - "-conf"
       - "/etc/selenoid/browsers.json"
